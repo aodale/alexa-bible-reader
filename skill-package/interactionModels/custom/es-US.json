@@ -1,0 +1,217 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "lector de biblia",
+      "intents": [
+        {
+          "name": "ReadStoryIntent",
+          "slots": [
+            { "name": "story",   "type": "BIBLE_STORY" },
+            { "name": "version", "type": "BIBLE_VERSION" }
+          ],
+          "samples": [
+            "lee la historia de {story}",
+            "cuéntame la historia de {story}",
+            "lee la historia bíblica de {story}",
+            "lee sobre {story}",
+            "cuéntame sobre {story}",
+            "lee la historia de {story} en {version}"
+          ]
+        },
+        {
+          "name": "ReadVerseIntent",
+          "slots": [
+            { "name": "book",    "type": "BIBLE_BOOK" },
+            { "name": "chapter", "type": "AMAZON.NUMBER" },
+            { "name": "verse",   "type": "AMAZON.NUMBER" },
+            { "name": "version", "type": "BIBLE_VERSION" }
+          ],
+          "samples": [
+            "lee {book} {chapter} {verse}",
+            "lee {book} capítulo {chapter} versículo {verse}",
+            "lee {book} capítulo {chapter} verso {verse}",
+            "lee {book} {chapter} {verse} en {version}",
+            "lee {book} capítulo {chapter} versículo {verse} en {version}"
+          ]
+        },
+        {
+          "name": "ReadPassageIntent",
+          "slots": [
+            { "name": "book",       "type": "BIBLE_BOOK" },
+            { "name": "chapter",    "type": "AMAZON.NUMBER" },
+            { "name": "startVerse", "type": "AMAZON.NUMBER" },
+            { "name": "endVerse",   "type": "AMAZON.NUMBER" },
+            { "name": "version",    "type": "BIBLE_VERSION" }
+          ],
+          "samples": [
+            "lee {book} {chapter} {startVerse} al {endVerse}",
+            "lee {book} capítulo {chapter} versículos {startVerse} al {endVerse}",
+            "lee {book} {chapter} versículos {startVerse} hasta {endVerse}",
+            "lee {book} capítulo {chapter} versículos {startVerse} al {endVerse} en {version}"
+          ]
+        },
+        {
+          "name": "ReadChapterIntent",
+          "slots": [
+            { "name": "book",    "type": "BIBLE_BOOK" },
+            { "name": "chapter", "type": "AMAZON.NUMBER" },
+            { "name": "version", "type": "BIBLE_VERSION" }
+          ],
+          "samples": [
+            "lee {book} capítulo {chapter}",
+            "lee {book} {chapter}",
+            "lee {book} capítulo {chapter} en {version}",
+            "lee el libro de {book} capítulo {chapter}",
+            "lee todo el capítulo {chapter} de {book}"
+          ]
+        },
+        {
+          "name": "SetBibleVersionIntent",
+          "slots": [
+            { "name": "version", "type": "BIBLE_VERSION" }
+          ],
+          "samples": [
+            "usa {version}",
+            "cambia a {version}",
+            "pon la versión {version}",
+            "usa la versión {version}",
+            "cambia la versión a {version}"
+          ]
+        },
+        { "name": "AMAZON.HelpIntent" },
+        { "name": "AMAZON.CancelIntent" },
+        { "name": "AMAZON.StopIntent" }
+      ],
+      "types": [
+        {
+          "name": "BIBLE_BOOK",
+          "values": [
+            {"name": {"value": "Génesis"}},
+            {"name": {"value": "Éxodo", "synonyms": ["Exodo"]}},
+            {"name": {"value": "Levítico"}},
+            {"name": {"value": "Números"}},
+            {"name": {"value": "Deuteronomio"}},
+            {"name": {"value": "Josué"}},
+            {"name": {"value": "Jueces"}},
+            {"name": {"value": "Rut"}},
+            {"name": {"value": "1 Samuel", "synonyms": ["Primero de Samuel"]}},
+            {"name": {"value": "2 Samuel", "synonyms": ["Segundo de Samuel"]}},
+            {"name": {"value": "1 Reyes", "synonyms": ["Primero de Reyes"]}},
+            {"name": {"value": "2 Reyes", "synonyms": ["Segundo de Reyes"]}},
+            {"name": {"value": "1 Crónicas", "synonyms": ["Primero de Crónicas"]}},
+            {"name": {"value": "2 Crónicas", "synonyms": ["Segundo de Crónicas"]}},
+            {"name": {"value": "Esdras"}},
+            {"name": {"value": "Nehemías"}},
+            {"name": {"value": "Ester"}},
+            {"name": {"value": "Job"}},
+            {"name": {"value": "Salmos", "synonyms": ["Salmo"]}},
+            {"name": {"value": "Proverbios"}},
+            {"name": {"value": "Eclesiastés"}},
+            {"name": {"value": "Cantares", "synonyms": ["Cantar de los Cantares"]}},
+            {"name": {"value": "Isaías"}},
+            {"name": {"value": "Jeremías"}},
+            {"name": {"value": "Lamentaciones"}},
+            {"name": {"value": "Ezequiel"}},
+            {"name": {"value": "Daniel"}},
+            {"name": {"value": "Oseas"}},
+            {"name": {"value": "Joel"}},
+            {"name": {"value": "Amós"}},
+            {"name": {"value": "Abdías"}},
+            {"name": {"value": "Jonás"}},
+            {"name": {"value": "Miqueas"}},
+            {"name": {"value": "Nahúm"}},
+            {"name": {"value": "Habacuc"}},
+            {"name": {"value": "Sofonías"}},
+            {"name": {"value": "Hageo"}},
+            {"name": {"value": "Zacarías"}},
+            {"name": {"value": "Malaquías"}},
+            {"name": {"value": "Mateo"}},
+            {"name": {"value": "Marcos"}},
+            {"name": {"value": "Lucas"}},
+            {"name": {"value": "Juan"}},
+            {"name": {"value": "Hechos", "synonyms": ["Hechos de los Apóstoles"]}},
+            {"name": {"value": "Romanos"}},
+            {"name": {"value": "1 Corintios", "synonyms": ["Primero de Corintios"]}},
+            {"name": {"value": "2 Corintios", "synonyms": ["Segundo de Corintios"]}},
+            {"name": {"value": "Gálatas"}},
+            {"name": {"value": "Efesios"}},
+            {"name": {"value": "Filipenses"}},
+            {"name": {"value": "Colosenses"}},
+            {"name": {"value": "1 Tesalonicenses", "synonyms": ["Primero de Tesalonicenses"]}},
+            {"name": {"value": "2 Tesalonicenses", "synonyms": ["Segundo de Tesalonicenses"]}},
+            {"name": {"value": "1 Timoteo", "synonyms": ["Primero de Timoteo"]}},
+            {"name": {"value": "2 Timoteo", "synonyms": ["Segundo de Timoteo"]}},
+            {"name": {"value": "Tito"}},
+            {"name": {"value": "Filemón"}},
+            {"name": {"value": "Hebreos"}},
+            {"name": {"value": "Santiago"}},
+            {"name": {"value": "1 Pedro", "synonyms": ["Primero de Pedro"]}},
+            {"name": {"value": "2 Pedro", "synonyms": ["Segundo de Pedro"]}},
+            {"name": {"value": "1 Juan", "synonyms": ["Primero de Juan"]}},
+            {"name": {"value": "2 Juan", "synonyms": ["Segundo de Juan"]}},
+            {"name": {"value": "3 Juan", "synonyms": ["Tercero de Juan"]}},
+            {"name": {"value": "Judas"}},
+            {"name": {"value": "Apocalipsis"}}
+          ]
+        },
+        {
+          "name": "BIBLE_STORY",
+          "values": [
+            {"name": {"value": "David y Goliat", "synonyms": ["David", "Goliat"]}},
+            {"name": {"value": "El arca de Noe", "synonyms": ["Noe", "el diluvio", "el arca"]}},
+            {"name": {"value": "El hijo prodigo", "synonyms": ["hijo prodigo"]}},
+            {"name": {"value": "El buen samaritano", "synonyms": ["buen samaritano"]}},
+            {"name": {"value": "El nacimiento de Jesus", "synonyms": ["la navidad", "la natividad", "Jesus nacio"]}},
+            {"name": {"value": "La creacion", "synonyms": ["creacion del mundo", "en el principio"]}},
+            {"name": {"value": "Adan y Eva", "synonyms": ["el jardin del Eden"]}},
+            {"name": {"value": "Jonas y la ballena", "synonyms": ["Jonas", "Jonas y el pez grande"]}},
+            {"name": {"value": "Los diez mandamientos", "synonyms": ["diez mandamientos", "los mandamientos"]}},
+            {"name": {"value": "El Padrenuestro", "synonyms": ["la oracion del senor", "padre nuestro"]}},
+            {"name": {"value": "La ultima cena", "synonyms": ["ultima cena"]}},
+            {"name": {"value": "La resurreccion de Lazaro", "synonyms": ["Lazaro"]}},
+            {"name": {"value": "Daniel en el foso de los leones", "synonyms": ["Daniel", "Daniel y los leones"]}},
+            {"name": {"value": "El horno ardiente", "synonyms": ["Sadrac Mesac y Abednego", "horno de fuego"]}},
+            {"name": {"value": "La alimentacion de los cinco mil", "synonyms": ["cinco panes y dos peces", "cinco mil"]}},
+            {"name": {"value": "Jesus camina sobre el agua", "synonyms": ["caminar sobre el agua"]}},
+            {"name": {"value": "Las bienaventuranzas", "synonyms": ["bienaventuranzas"]}},
+            {"name": {"value": "La mujer junto al pozo", "synonyms": ["la samaritana", "mujer samaritana"]}},
+            {"name": {"value": "Moises divide el mar rojo", "synonyms": ["el mar rojo", "cruzar el mar rojo"]}},
+            {"name": {"value": "La torre de Babel", "synonyms": ["torre de Babel", "Babel"]}},
+            {"name": {"value": "La resurreccion", "synonyms": ["Pascua de resurreccion", "tumba vacia"]}},
+            {"name": {"value": "El bautismo de Jesus", "synonyms": ["bautismo de Jesus"]}},
+            {"name": {"value": "Zaqueo", "synonyms": ["Zaqueo el recaudador"]}},
+            {"name": {"value": "Abraham e Isaac", "synonyms": ["sacrificio de Isaac"]}},
+            {"name": {"value": "Elias y los profetas de Baal", "synonyms": ["Elias", "monte Carmelo"]}},
+            {"name": {"value": "Rut y Noemi", "synonyms": ["Rut", "Noemi"]}},
+            {"name": {"value": "La Pascua", "synonyms": ["pascua judia"]}},
+            {"name": {"value": "Sanson y Dalila", "synonyms": ["Sanson", "Dalila"]}},
+            {"name": {"value": "Pentecostes", "synonyms": ["el Espiritu Santo"]}},
+            {"name": {"value": "La conversion de Saulo", "synonyms": ["camino a Damasco", "conversion de Pablo"]}},
+            {"name": {"value": "La crucifixion", "synonyms": ["Jesus en la cruz"]}},
+            {"name": {"value": "El camino a Emaus", "synonyms": ["Emaus"]}},
+            {"name": {"value": "El domingo de ramos", "synonyms": ["entrada triunfal"]}},
+            {"name": {"value": "Getsemani", "synonyms": ["jardin de Getsemani"]}},
+            {"name": {"value": "Las bodas de Cana", "synonyms": ["agua en vino", "boda de Cana"]}},
+            {"name": {"value": "La transfiguracion", "synonyms": ["transfiguracion"]}},
+            {"name": {"value": "El sermon del monte", "synonyms": ["sermon de la montana"]}},
+            {"name": {"value": "Cain y Abel", "synonyms": ["Cain", "Abel"]}},
+            {"name": {"value": "La caida de Jerico", "synonyms": ["Jerico", "muros de Jerico"]}},
+            {"name": {"value": "Ester", "synonyms": ["Ester salva a su pueblo"]}},
+            {"name": {"value": "El valle de los huesos secos", "synonyms": ["huesos secos"]}}
+          ]
+        },
+        {
+          "name": "BIBLE_VERSION",
+          "values": [
+            {"name": {"value": "KJV",  "synonyms": ["Rey Jacobo", "King James"]}},
+            {"name": {"value": "NIV",  "synonyms": ["Nueva Version Internacional", "NVI"]}},
+            {"name": {"value": "NASB", "synonyms": ["Nueva Biblia de las Americas"]}},
+            {"name": {"value": "NLT",  "synonyms": ["Nueva Traduccion Viviente", "NTV"]}},
+            {"name": {"value": "NKJV", "synonyms": ["Nueva Rey Jacobo"]}},
+            {"name": {"value": "ASV",  "synonyms": ["Version Estandar Americana"]}}
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "bible-reader",
+  "version": "1.0.0",
+  "description": "A Bible reading application",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "deploy": "zip -r skill.zip . -x node_modules/\\* && aws lambda update-function-code --function-name bible-reader --zip-file fileb://skill.zip",
+    "test": "jest"
+  },
+  "keywords": ["bible", "reader", "scripture"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ask-sdk-core": "^2.14.0",
+    "ask-sdk-model": "^1.29.0",
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0",
+    "jest": "^29.7.0"
+  }
+}

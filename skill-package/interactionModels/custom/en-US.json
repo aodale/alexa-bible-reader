@@ -1,0 +1,264 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "bible reader",
+      "intents": [
+        {
+          "name": "ReadStoryIntent",
+          "slots": [
+            { "name": "story",   "type": "BIBLE_STORY" },
+            { "name": "version", "type": "BIBLE_VERSION" }
+          ],
+          "samples": [
+            "read the story of {story}",
+            "tell me the story of {story}",
+            "read the bible story about {story}",
+            "play the story of {story}",
+            "read the {story} story",
+            "tell me about {story}",
+            "read the story of {story} in {version}"
+          ]
+        },
+        {
+          "name": "ReadVerseIntent",
+          "slots": [
+            {
+              "name": "book",
+              "type": "BIBLE_BOOK"
+            },
+            {
+              "name": "chapter",
+              "type": "AMAZON.NUMBER"
+            },
+            {
+              "name": "verse",
+              "type": "AMAZON.NUMBER"
+            },
+            {
+              "name": "version",
+              "type": "BIBLE_VERSION"
+            }
+          ],
+          "samples": [
+            "read {book} {chapter} {verse}",
+            "read {book} {chapter} verse {verse}",
+            "read {book} {chapter} {verse} in {version}",
+            "read {book} chapter {chapter} verse {verse}",
+            "read {book} chapter {chapter} verse {verse} in {version}"
+          ]
+        },
+        {
+          "name": "ReadPassageIntent",
+          "slots": [
+            {
+              "name": "book",
+              "type": "BIBLE_BOOK"
+            },
+            {
+              "name": "chapter",
+              "type": "AMAZON.NUMBER"
+            },
+            {
+              "name": "startVerse",
+              "type": "AMAZON.NUMBER"
+            },
+            {
+              "name": "endVerse",
+              "type": "AMAZON.NUMBER"
+            },
+            {
+              "name": "version",
+              "type": "BIBLE_VERSION"
+            }
+          ],
+          "samples": [
+            "read {book} {chapter} {startVerse} to {endVerse}",
+            "read {book} {chapter} {startVerse} through {endVerse}",
+            "read {book} {chapter} verses {startVerse} to {endVerse}",
+            "read {book} {chapter} verses {startVerse} through {endVerse}",
+            "read {book} {chapter} verses {startVerse} to {endVerse} in {version}"
+          ]
+        },
+        {
+          "name": "ReadChapterIntent",
+          "slots": [
+            {
+              "name": "book",
+              "type": "BIBLE_BOOK"
+            },
+            {
+              "name": "chapter",
+              "type": "AMAZON.NUMBER"
+            },
+            {
+              "name": "version",
+              "type": "BIBLE_VERSION"
+            }
+          ],
+          "samples": [
+            "read {book} chapter {chapter}",
+            "read {book} {chapter}",
+            "read {book} chapter {chapter} in {version}",
+            "read the book of {book} chapter {chapter}",
+            "read all of {book} chapter {chapter}"
+          ]
+        },
+        {
+          "name": "SetBibleVersionIntent",
+          "slots": [
+            {
+              "name": "version",
+              "type": "BIBLE_VERSION"
+            }
+          ],
+          "samples": [
+            "set version to {version}",
+            "use {version}",
+            "change to {version}",
+            "switch to {version}"
+          ]
+        },
+        {
+          "name": "AMAZON.HelpIntent"
+        },
+        {
+          "name": "AMAZON.CancelIntent"
+        },
+        {
+          "name": "AMAZON.StopIntent"
+        }
+      ],
+      "types": [
+        {
+          "name": "BIBLE_BOOK",
+          "values": [
+            {"name": {"value": "Genesis"}},
+            {"name": {"value": "Exodus"}},
+            {"name": {"value": "Leviticus"}},
+            {"name": {"value": "Numbers"}},
+            {"name": {"value": "Deuteronomy"}},
+            {"name": {"value": "Joshua"}},
+            {"name": {"value": "Judges"}},
+            {"name": {"value": "Ruth"}},
+            {"name": {"value": "1 Samuel", "synonyms": ["First Samuel", "1st Samuel"]}},
+            {"name": {"value": "2 Samuel", "synonyms": ["Second Samuel", "2nd Samuel"]}},
+            {"name": {"value": "1 Kings", "synonyms": ["First Kings", "1st Kings"]}},
+            {"name": {"value": "2 Kings", "synonyms": ["Second Kings", "2nd Kings"]}},
+            {"name": {"value": "1 Chronicles", "synonyms": ["First Chronicles", "1st Chronicles"]}},
+            {"name": {"value": "2 Chronicles", "synonyms": ["Second Chronicles", "2nd Chronicles"]}},
+            {"name": {"value": "Ezra"}},
+            {"name": {"value": "Nehemiah"}},
+            {"name": {"value": "Esther"}},
+            {"name": {"value": "Job"}},
+            {"name": {"value": "Psalms", "synonyms": ["Psalm"]}},
+            {"name": {"value": "Proverbs"}},
+            {"name": {"value": "Ecclesiastes"}},
+            {"name": {"value": "Song of Solomon", "synonyms": ["Song of Songs"]}},
+            {"name": {"value": "Isaiah"}},
+            {"name": {"value": "Jeremiah"}},
+            {"name": {"value": "Lamentations"}},
+            {"name": {"value": "Ezekiel"}},
+            {"name": {"value": "Daniel"}},
+            {"name": {"value": "Hosea"}},
+            {"name": {"value": "Joel"}},
+            {"name": {"value": "Amos"}},
+            {"name": {"value": "Obadiah"}},
+            {"name": {"value": "Jonah"}},
+            {"name": {"value": "Micah"}},
+            {"name": {"value": "Nahum"}},
+            {"name": {"value": "Habakkuk"}},
+            {"name": {"value": "Zephaniah"}},
+            {"name": {"value": "Haggai"}},
+            {"name": {"value": "Zechariah"}},
+            {"name": {"value": "Malachi"}},
+            {"name": {"value": "Matthew"}},
+            {"name": {"value": "Mark"}},
+            {"name": {"value": "Luke"}},
+            {"name": {"value": "John"}},
+            {"name": {"value": "Acts"}},
+            {"name": {"value": "Romans"}},
+            {"name": {"value": "1 Corinthians", "synonyms": ["First Corinthians", "1st Corinthians"]}},
+            {"name": {"value": "2 Corinthians", "synonyms": ["Second Corinthians", "2nd Corinthians"]}},
+            {"name": {"value": "Galatians"}},
+            {"name": {"value": "Ephesians"}},
+            {"name": {"value": "Philippians"}},
+            {"name": {"value": "Colossians"}},
+            {"name": {"value": "1 Thessalonians", "synonyms": ["First Thessalonians", "1st Thessalonians"]}},
+            {"name": {"value": "2 Thessalonians", "synonyms": ["Second Thessalonians", "2nd Thessalonians"]}},
+            {"name": {"value": "1 Timothy", "synonyms": ["First Timothy", "1st Timothy"]}},
+            {"name": {"value": "2 Timothy", "synonyms": ["Second Timothy", "2nd Timothy"]}},
+            {"name": {"value": "Titus"}},
+            {"name": {"value": "Philemon"}},
+            {"name": {"value": "Hebrews"}},
+            {"name": {"value": "James"}},
+            {"name": {"value": "1 Peter", "synonyms": ["First Peter", "1st Peter"]}},
+            {"name": {"value": "2 Peter", "synonyms": ["Second Peter", "2nd Peter"]}},
+            {"name": {"value": "1 John", "synonyms": ["First John", "1st John"]}},
+            {"name": {"value": "2 John", "synonyms": ["Second John", "2nd John"]}},
+            {"name": {"value": "3 John", "synonyms": ["Third John", "3rd John"]}},
+            {"name": {"value": "Jude"}},
+            {"name": {"value": "Revelation", "synonyms": ["Revelations"]}}
+          ]
+        },
+        {
+          "name": "BIBLE_STORY",
+          "values": [
+            {"name": {"value": "David and Goliath", "synonyms": ["David", "Goliath"]}},
+            {"name": {"value": "Noahs Ark", "synonyms": ["Noah", "the flood", "the ark"]}},
+            {"name": {"value": "The Prodigal Son", "synonyms": ["prodigal son", "lost son"]}},
+            {"name": {"value": "The Good Samaritan", "synonyms": ["good samaritan"]}},
+            {"name": {"value": "The Christmas Story", "synonyms": ["Christmas", "nativity", "birth of Jesus"]}},
+            {"name": {"value": "The Creation", "synonyms": ["creation", "in the beginning", "Genesis"]}},
+            {"name": {"value": "Adam and Eve", "synonyms": ["garden of Eden"]}},
+            {"name": {"value": "Jonah and the Whale", "synonyms": ["Jonah", "Jonah and the fish"]}},
+            {"name": {"value": "The Ten Commandments", "synonyms": ["ten commandments", "commandments"]}},
+            {"name": {"value": "The Lords Prayer", "synonyms": ["Lords prayer", "our father"]}},
+            {"name": {"value": "The Last Supper", "synonyms": ["last supper"]}},
+            {"name": {"value": "The Raising of Lazarus", "synonyms": ["Lazarus", "Jesus raises Lazarus"]}},
+            {"name": {"value": "Daniel in the Lions Den", "synonyms": ["Daniel", "Daniel and the lions"]}},
+            {"name": {"value": "The Fiery Furnace", "synonyms": ["fiery furnace", "Shadrach Meshach Abednego"]}},
+            {"name": {"value": "Feeding the Five Thousand", "synonyms": ["loaves and fishes", "five thousand"]}},
+            {"name": {"value": "Jesus Walks on Water", "synonyms": ["walking on water"]}},
+            {"name": {"value": "The Beatitudes", "synonyms": ["beatitudes", "blessed are"]}},
+            {"name": {"value": "The Woman at the Well", "synonyms": ["woman at the well", "Samaritan woman"]}},
+            {"name": {"value": "Moses Parts the Red Sea", "synonyms": ["Red Sea", "crossing the Red Sea"]}},
+            {"name": {"value": "The Tower of Babel", "synonyms": ["tower of Babel", "Babel"]}},
+            {"name": {"value": "The Resurrection", "synonyms": ["Easter", "empty tomb", "Jesus rises"]}},
+            {"name": {"value": "The Baptism of Jesus", "synonyms": ["baptism of Jesus"]}},
+            {"name": {"value": "Zacchaeus", "synonyms": ["Zacchaeus the tax collector"]}},
+            {"name": {"value": "Abraham and Isaac", "synonyms": ["binding of Isaac"]}},
+            {"name": {"value": "Elijah and the Prophets of Baal", "synonyms": ["Elijah", "Mount Carmel"]}},
+            {"name": {"value": "Ruth and Naomi", "synonyms": ["Ruth", "Naomi"]}},
+            {"name": {"value": "Samuel Called by God", "synonyms": ["Samuel"]}},
+            {"name": {"value": "The Passover", "synonyms": ["passover"]}},
+            {"name": {"value": "Samson and Delilah", "synonyms": ["Samson", "Delilah"]}},
+            {"name": {"value": "Pentecost", "synonyms": ["holy spirit", "coming of the holy spirit"]}},
+            {"name": {"value": "Sauls Conversion", "synonyms": ["road to Damascus", "Pauls conversion"]}},
+            {"name": {"value": "The Crucifixion", "synonyms": ["crucifixion", "Jesus on the cross"]}},
+            {"name": {"value": "The Road to Emmaus", "synonyms": ["road to Emmaus", "Emmaus"]}},
+            {"name": {"value": "Palm Sunday", "synonyms": ["triumphal entry", "Palm Sunday"]}},
+            {"name": {"value": "Gethsemane", "synonyms": ["garden of Gethsemane"]}},
+            {"name": {"value": "The Wedding at Cana", "synonyms": ["water into wine", "wedding at Cana"]}},
+            {"name": {"value": "The Transfiguration", "synonyms": ["transfiguration"]}},
+            {"name": {"value": "The Sermon on the Mount", "synonyms": ["sermon on the mount"]}},
+            {"name": {"value": "Cain and Abel", "synonyms": ["Cain", "Abel"]}},
+            {"name": {"value": "The Fall of Jericho", "synonyms": ["Jericho", "walls of Jericho"]}},
+            {"name": {"value": "Esther", "synonyms": ["Esther saves her people"]}},
+            {"name": {"value": "The Valley of Dry Bones", "synonyms": ["dry bones", "valley of dry bones"]}}
+          ]
+        },
+        {
+          "name": "BIBLE_VERSION",
+          "values": [
+            {"name": {"value": "KJV",  "synonyms": ["King James Version", "King James"]}},
+            {"name": {"value": "NIV",  "synonyms": ["New International Version"]}},
+            {"name": {"value": "NASB", "synonyms": ["New American Standard Bible", "New American Standard"]}},
+            {"name": {"value": "NLT",  "synonyms": ["New Living Translation"]}},
+            {"name": {"value": "NKJV", "synonyms": ["New King James Version", "New King James"]}},
+            {"name": {"value": "ASV",  "synonyms": ["American Standard Version", "American Standard"]}}
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,216 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "lecteur de bible",
+      "intents": [
+        {
+          "name": "ReadStoryIntent",
+          "slots": [
+            { "name": "story",   "type": "BIBLE_STORY" },
+            { "name": "version", "type": "BIBLE_VERSION" }
+          ],
+          "samples": [
+            "lis l histoire de {story}",
+            "raconte moi l histoire de {story}",
+            "lis l histoire biblique de {story}",
+            "lis sur {story}",
+            "raconte moi {story}",
+            "lis l histoire de {story} en {version}"
+          ]
+        },
+        {
+          "name": "ReadVerseIntent",
+          "slots": [
+            { "name": "book",    "type": "BIBLE_BOOK" },
+            { "name": "chapter", "type": "AMAZON.NUMBER" },
+            { "name": "verse",   "type": "AMAZON.NUMBER" },
+            { "name": "version", "type": "BIBLE_VERSION" }
+          ],
+          "samples": [
+            "lis {book} {chapter} {verse}",
+            "lis {book} chapitre {chapter} verset {verse}",
+            "lis {book} {chapter} {verse} en {version}",
+            "lis {book} chapitre {chapter} verset {verse} en {version}"
+          ]
+        },
+        {
+          "name": "ReadPassageIntent",
+          "slots": [
+            { "name": "book",       "type": "BIBLE_BOOK" },
+            { "name": "chapter",    "type": "AMAZON.NUMBER" },
+            { "name": "startVerse", "type": "AMAZON.NUMBER" },
+            { "name": "endVerse",   "type": "AMAZON.NUMBER" },
+            { "name": "version",    "type": "BIBLE_VERSION" }
+          ],
+          "samples": [
+            "lis {book} {chapter} {startVerse} a {endVerse}",
+            "lis {book} chapitre {chapter} versets {startVerse} a {endVerse}",
+            "lis {book} {chapter} versets {startVerse} jusqu a {endVerse}",
+            "lis {book} chapitre {chapter} versets {startVerse} a {endVerse} en {version}"
+          ]
+        },
+        {
+          "name": "ReadChapterIntent",
+          "slots": [
+            { "name": "book",    "type": "BIBLE_BOOK" },
+            { "name": "chapter", "type": "AMAZON.NUMBER" },
+            { "name": "version", "type": "BIBLE_VERSION" }
+          ],
+          "samples": [
+            "lis {book} chapitre {chapter}",
+            "lis {book} {chapter}",
+            "lis {book} chapitre {chapter} en {version}",
+            "lis le livre de {book} chapitre {chapter}",
+            "lis tout le chapitre {chapter} de {book}"
+          ]
+        },
+        {
+          "name": "SetBibleVersionIntent",
+          "slots": [
+            { "name": "version", "type": "BIBLE_VERSION" }
+          ],
+          "samples": [
+            "utilise {version}",
+            "change pour {version}",
+            "mets la version {version}",
+            "utilise la version {version}",
+            "change la version pour {version}"
+          ]
+        },
+        { "name": "AMAZON.HelpIntent" },
+        { "name": "AMAZON.CancelIntent" },
+        { "name": "AMAZON.StopIntent" }
+      ],
+      "types": [
+        {
+          "name": "BIBLE_BOOK",
+          "values": [
+            {"name": {"value": "Genese", "synonyms": ["Genèse"]}},
+            {"name": {"value": "Exode"}},
+            {"name": {"value": "Levitique", "synonyms": ["Lévitique"]}},
+            {"name": {"value": "Nombres"}},
+            {"name": {"value": "Deuteronome", "synonyms": ["Deutéronome"]}},
+            {"name": {"value": "Josue", "synonyms": ["Josué"]}},
+            {"name": {"value": "Juges"}},
+            {"name": {"value": "Ruth"}},
+            {"name": {"value": "1 Samuel", "synonyms": ["Premier Samuel"]}},
+            {"name": {"value": "2 Samuel", "synonyms": ["Deuxieme Samuel"]}},
+            {"name": {"value": "1 Rois", "synonyms": ["Premier Rois"]}},
+            {"name": {"value": "2 Rois", "synonyms": ["Deuxieme Rois"]}},
+            {"name": {"value": "1 Chroniques", "synonyms": ["Premier Chroniques"]}},
+            {"name": {"value": "2 Chroniques", "synonyms": ["Deuxieme Chroniques"]}},
+            {"name": {"value": "Esdras"}},
+            {"name": {"value": "Nehemie", "synonyms": ["Néhémie"]}},
+            {"name": {"value": "Esther"}},
+            {"name": {"value": "Job"}},
+            {"name": {"value": "Psaumes", "synonyms": ["Psaume"]}},
+            {"name": {"value": "Proverbes"}},
+            {"name": {"value": "Ecclesiaste", "synonyms": ["Ecclésiaste"]}},
+            {"name": {"value": "Cantique des Cantiques"}},
+            {"name": {"value": "Esaie", "synonyms": ["Ésaïe", "Isaie"]}},
+            {"name": {"value": "Jeremie", "synonyms": ["Jérémie"]}},
+            {"name": {"value": "Lamentations"}},
+            {"name": {"value": "Ezechiel", "synonyms": ["Ézéchiel"]}},
+            {"name": {"value": "Daniel"}},
+            {"name": {"value": "Osee", "synonyms": ["Osée"]}},
+            {"name": {"value": "Joel", "synonyms": ["Joël"]}},
+            {"name": {"value": "Amos"}},
+            {"name": {"value": "Abdias"}},
+            {"name": {"value": "Jonas"}},
+            {"name": {"value": "Michee", "synonyms": ["Michée"]}},
+            {"name": {"value": "Nahum"}},
+            {"name": {"value": "Habacuc"}},
+            {"name": {"value": "Sophonie"}},
+            {"name": {"value": "Aggee", "synonyms": ["Aggée"]}},
+            {"name": {"value": "Zacharie"}},
+            {"name": {"value": "Malachie"}},
+            {"name": {"value": "Matthieu"}},
+            {"name": {"value": "Marc"}},
+            {"name": {"value": "Luc"}},
+            {"name": {"value": "Jean"}},
+            {"name": {"value": "Actes", "synonyms": ["Actes des Apotres"]}},
+            {"name": {"value": "Romains"}},
+            {"name": {"value": "1 Corinthiens", "synonyms": ["Premier Corinthiens"]}},
+            {"name": {"value": "2 Corinthiens", "synonyms": ["Deuxieme Corinthiens"]}},
+            {"name": {"value": "Galates"}},
+            {"name": {"value": "Ephesiens", "synonyms": ["Éphésiens"]}},
+            {"name": {"value": "Philippiens"}},
+            {"name": {"value": "Colossiens"}},
+            {"name": {"value": "1 Thessaloniciens", "synonyms": ["Premier Thessaloniciens"]}},
+            {"name": {"value": "2 Thessaloniciens", "synonyms": ["Deuxieme Thessaloniciens"]}},
+            {"name": {"value": "1 Timothee", "synonyms": ["1 Timothée", "Premier Timothee"]}},
+            {"name": {"value": "2 Timothee", "synonyms": ["2 Timothée", "Deuxieme Timothee"]}},
+            {"name": {"value": "Tite"}},
+            {"name": {"value": "Philemon", "synonyms": ["Philémon"]}},
+            {"name": {"value": "Hebreux", "synonyms": ["Hébreux"]}},
+            {"name": {"value": "Jacques"}},
+            {"name": {"value": "1 Pierre", "synonyms": ["Premier Pierre"]}},
+            {"name": {"value": "2 Pierre", "synonyms": ["Deuxieme Pierre"]}},
+            {"name": {"value": "1 Jean", "synonyms": ["Premier Jean"]}},
+            {"name": {"value": "2 Jean", "synonyms": ["Deuxieme Jean"]}},
+            {"name": {"value": "3 Jean", "synonyms": ["Troisieme Jean"]}},
+            {"name": {"value": "Jude"}},
+            {"name": {"value": "Apocalypse"}}
+          ]
+        },
+        {
+          "name": "BIBLE_STORY",
+          "values": [
+            {"name": {"value": "David et Goliath", "synonyms": ["David", "Goliath"]}},
+            {"name": {"value": "L arche de Noe", "synonyms": ["Noe", "le deluge", "l arche"]}},
+            {"name": {"value": "Le fils prodigue", "synonyms": ["fils prodigue"]}},
+            {"name": {"value": "Le bon Samaritain", "synonyms": ["bon Samaritain"]}},
+            {"name": {"value": "La naissance de Jesus", "synonyms": ["Noel", "la nativite", "Jesus est ne"]}},
+            {"name": {"value": "La creation", "synonyms": ["creation du monde", "au commencement"]}},
+            {"name": {"value": "Adam et Eve", "synonyms": ["jardin d Eden"]}},
+            {"name": {"value": "Jonas et la baleine", "synonyms": ["Jonas", "Jonas et le grand poisson"]}},
+            {"name": {"value": "Les dix commandements", "synonyms": ["dix commandements", "les commandements"]}},
+            {"name": {"value": "Le Notre Pere", "synonyms": ["notre pere", "priere du Seigneur"]}},
+            {"name": {"value": "La Cene", "synonyms": ["derniere cene", "cene"]}},
+            {"name": {"value": "La resurrection de Lazare", "synonyms": ["Lazare"]}},
+            {"name": {"value": "Daniel dans la fosse aux lions", "synonyms": ["Daniel", "Daniel et les lions"]}},
+            {"name": {"value": "La fournaise ardente", "synonyms": ["Shadrach Meshach Abednego", "fournaise"]}},
+            {"name": {"value": "La multiplication des pains", "synonyms": ["cinq pains deux poissons", "cinq mille"]}},
+            {"name": {"value": "Jesus marche sur l eau", "synonyms": ["marcher sur l eau"]}},
+            {"name": {"value": "Les Beatitudes", "synonyms": ["beatitudes", "heureux ceux"]}},
+            {"name": {"value": "La femme samaritaine", "synonyms": ["femme au puits", "samaritaine"]}},
+            {"name": {"value": "Moise et la mer Rouge", "synonyms": ["mer Rouge", "traversee de la mer Rouge"]}},
+            {"name": {"value": "La tour de Babel", "synonyms": ["tour de Babel", "Babel"]}},
+            {"name": {"value": "La resurrection", "synonyms": ["Paques", "tombeau vide"]}},
+            {"name": {"value": "Le bapteme de Jesus", "synonyms": ["bapteme de Jesus"]}},
+            {"name": {"value": "Zachee", "synonyms": ["Zachee le collecteur"]}},
+            {"name": {"value": "Abraham et Isaac", "synonyms": ["sacrifice d Isaac"]}},
+            {"name": {"value": "Elie et les prophetes de Baal", "synonyms": ["Elie", "mont Carmel"]}},
+            {"name": {"value": "Ruth et Naomi", "synonyms": ["Ruth", "Naomi"]}},
+            {"name": {"value": "La Paque", "synonyms": ["paque juive"]}},
+            {"name": {"value": "Samson et Dalila", "synonyms": ["Samson", "Dalila"]}},
+            {"name": {"value": "La Pentecote", "synonyms": ["Esprit Saint", "pentecote"]}},
+            {"name": {"value": "La conversion de Saul", "synonyms": ["chemin de Damas", "conversion de Paul"]}},
+            {"name": {"value": "La crucifixion", "synonyms": ["Jesus sur la croix"]}},
+            {"name": {"value": "Le chemin d Emmaus", "synonyms": ["Emmaus"]}},
+            {"name": {"value": "Le dimanche des Rameaux", "synonyms": ["entree triomphale"]}},
+            {"name": {"value": "Gethsemane", "synonyms": ["jardin de Gethsemane"]}},
+            {"name": {"value": "Les noces de Cana", "synonyms": ["eau en vin", "noces de Cana"]}},
+            {"name": {"value": "La transfiguration", "synonyms": ["transfiguration"]}},
+            {"name": {"value": "Le sermon sur la montagne", "synonyms": ["sermon de la montagne"]}},
+            {"name": {"value": "Cain et Abel", "synonyms": ["Cain", "Abel"]}},
+            {"name": {"value": "La chute de Jericho", "synonyms": ["Jericho", "murs de Jericho"]}},
+            {"name": {"value": "Esther", "synonyms": ["Esther sauve son peuple"]}},
+            {"name": {"value": "La vallee des ossements", "synonyms": ["ossements desseches", "vallee des os"]}}
+          ]
+        },
+        {
+          "name": "BIBLE_VERSION",
+          "values": [
+            {"name": {"value": "KJV",  "synonyms": ["King James"]}},
+            {"name": {"value": "NIV",  "synonyms": ["Nouvelle Version Internationale"]}},
+            {"name": {"value": "NASB", "synonyms": ["Nouvelle Bible Americaine"]}},
+            {"name": {"value": "NLT",  "synonyms": ["Nouvelle Traduction Vivante"]}},
+            {"name": {"value": "NKJV", "synonyms": ["Nouveau King James"]}},
+            {"name": {"value": "ASV",  "synonyms": ["Version Standard Americaine"]}}
+          ]
+        }
+      ]
+    }
+  }
+}
