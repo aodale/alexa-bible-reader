@@ -1,0 +1,56 @@
+name: Deploy to AWS Lambda
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'package.json'
+      - 'package-lock.json'
+
+jobs:
+  deploy:
+    name: Package and deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install production dependencies
+        run: npm ci --omit=dev
+
+      - name: Create deployment package
+        run: zip -r skill.zip src/ node_modules/ package.json
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ vars.AWS_REGION || 'us-east-1' }}
+
+      - name: Deploy Lambda code
+        run: |
+          aws lambda update-function-code \
+            --function-name bible-reader \
+            --zip-file fileb://skill.zip \
+            --no-cli-pager
+
+      - name: Update Lambda environment variables
+        run: |
+          aws lambda update-function-configuration \
+            --function-name bible-reader \
+            --environment "Variables={BIBLE_API_KEY=${{ secrets.BIBLE_API_KEY }}}" \
+            --no-cli-pager
+
+      - name: Wait for update to complete
+        run: |
+          aws lambda wait function-updated \
+            --function-name bible-reader
