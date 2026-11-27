@@ -21,29 +21,37 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
           cache: 'npm'
 
       - name: Install ASK CLI
         run: npm install -g ask-cli
 
       - name: Configure ASK credentials
+        env:
+          ASK_ACCESS_TOKEN: ${{ secrets.ASK_ACCESS_TOKEN }}
+          ASK_REFRESH_TOKEN: ${{ secrets.ASK_REFRESH_TOKEN }}
+          ASK_VENDOR_ID: ${{ secrets.ASK_VENDOR_ID }}
         run: |
           mkdir -p ~/.ask
-          cat > ~/.ask/cli_config << 'EOF'
+          cat > ~/.ask/cli_config << EOF
           {
             "profiles": {
               "default": {
                 "token": {
-                  "access_token": "${{ secrets.ASK_ACCESS_TOKEN }}",
-                  "refresh_token": "${{ secrets.ASK_REFRESH_TOKEN }}",
+                  "access_token": "${ASK_ACCESS_TOKEN}",
+                  "refresh_token": "${ASK_REFRESH_TOKEN}",
                   "token_type": "bearer"
                 },
-                "vendor_id": "${{ secrets.ASK_VENDOR_ID }}"
+                "vendor_id": "${ASK_VENDOR_ID}"
               }
             }
           }
           EOF
 
+      - name: Inject skill ID into ask-resources.json
+        run: |
+          sed -i 's/__SKILL_ID_PLACEHOLDER__/${{ secrets.SKILL_ID }}/' ask-resources.json
+
       - name: Deploy to Alexa-Hosted
-        run: ask deploy --skill-id ${{ secrets.SKILL_ID }} --profile default
+        run: ask deploy --profile default
