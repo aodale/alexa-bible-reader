@@ -8,6 +8,9 @@ on:
       - 'skill-package/**'
       - 'package.json'
       - 'package-lock.json'
+      - '.github/workflows/deploy.yml'
+      - 'ask-resources.json'
+  workflow_dispatch:
 
 jobs:
   deploy:
