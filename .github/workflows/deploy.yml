@@ -62,7 +62,9 @@ jobs:
           fi
           jq --arg id "$SKILL_ID" '.profiles.default.skillId = $id' ask-resources.json > tmp.json
           mv tmp.json ask-resources.json
-          echo "Deploying to skill: $SKILL_ID"
+          echo "--- ask-resources.json after injection ---"
+          cat ask-resources.json
+          echo "------------------------------------------"
 
       - name: Deploy to Alexa-Hosted
-        run: ask deploy --profile default
+        run: ask deploy --profile default --debug
