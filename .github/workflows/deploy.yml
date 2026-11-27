@@ -53,8 +53,18 @@ jobs:
           EOF
 
       - name: Inject skill ID into ask-resources.json
+        env:
+          SKILL_ID: ${{ secrets.SKILL_ID }}
         run: |
-          sed -i 's/__SKILL_ID_PLACEHOLDER__/${{ secrets.SKILL_ID }}/' ask-resources.json
+          if [ -z "$SKILL_ID" ]; then
+            echo "Error: SKILL_ID secret is not set"
+            exit 1
+          fi
+          jq --arg id "$SKILL_ID" '.profiles.default.skillId = $id' ask-resources.json > tmp.json
+          mv tmp.json ask-resources.json
+          echo "--- ask-resources.json after injection ---"
+          cat ask-resources.json
+          echo "------------------------------------------"
 
       - name: Deploy to Alexa-Hosted
-        run: ask deploy --profile default
+        run: ask deploy --profile default --debug
