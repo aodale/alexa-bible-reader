@@ -465,6 +465,7 @@ class BibleService {
       const response = await axios.get(
         this.baseUrl + '/bibles/' + bibleId + '/passages/' + ref,
         {
+          timeout: 8000,
           headers: { 'api-key': this.apiKey },
           params: {
             'content-type': 'text',
@@ -518,6 +519,7 @@ class BibleService {
       const response = await axios.get(
         this.baseUrl + '/bibles/' + bibleId + '/passages/' + reference,
         {
+          timeout: 8000,
           headers: { 'api-key': this.apiKey },
           params: {
             'content-type': 'text',
@@ -556,6 +558,7 @@ class BibleService {
       const response = await axios.get(
         this.baseUrl + '/bibles/' + bibleId + '/passages/' + reference,
         {
+          timeout: 8000,
           headers: { 'api-key': this.apiKey },
           params: {
             'content-type': 'text',
@@ -593,13 +596,14 @@ class BibleService {
       const response = await axios.get(
         this.baseUrl + '/bibles/' + bibleId + '/passages/' + reference,
         {
+          timeout: 8000,
           headers: { 'api-key': this.apiKey },
           params: {
             'content-type': 'text',
             'include-notes': false,
-            'include-titles': true,
+            'include-titles': false,
             'include-chapter-numbers': false,
-            'include-verse-numbers': true
+            'include-verse-numbers': false
           }
         }
       );
@@ -621,8 +625,10 @@ class BibleService {
 
   cleanText(text) {
     return text
-      .replace(/<[^>]*>/g, '')
-      .replace(/\n\s*\n/g, '. ')
+      .replace(/<[^>]*>/g, '')         // strip any residual HTML tags
+      .replace(/\[\d+\]/g, '')          // remove verse numbers like [1], [12]
+      .replace(/^\d+\s+/gm, '')         // remove leading verse numbers like "1 " at line start
+      .replace(/\n+/g, ' ')             // collapse newlines to spaces for natural speech
       .replace(/\s+/g, ' ')
       .trim();
   }

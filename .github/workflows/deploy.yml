@@ -1,0 +1,49 @@
+name: Deploy to Alexa-Hosted
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'skill-package/**'
+      - 'package.json'
+      - 'package-lock.json'
+
+jobs:
+  deploy:
+    name: Deploy skill
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install ASK CLI
+        run: npm install -g ask-cli
+
+      - name: Configure ASK credentials
+        run: |
+          mkdir -p ~/.ask
+          cat > ~/.ask/cli_config << 'EOF'
+          {
+            "profiles": {
+              "default": {
+                "token": {
+                  "access_token": "${{ secrets.ASK_ACCESS_TOKEN }}",
+                  "refresh_token": "${{ secrets.ASK_REFRESH_TOKEN }}",
+                  "token_type": "bearer"
+                },
+                "vendor_id": "${{ secrets.ASK_VENDOR_ID }}"
+              }
+            }
+          }
+          EOF
+
+      - name: Deploy to Alexa-Hosted
+        run: ask deploy --skill-id ${{ secrets.SKILL_ID }} --profile default
