@@ -2,8 +2,7 @@
   "askcliResourcesVersion": "2020-03-31",
   "profiles": {
     "default": {
-      "skillId": "__SKILL_ID_PLACEHOLDER__",
-      "skillMetadata": {
+"skillMetadata": {
         "src": "./skill-package"
       },
       "code": {
