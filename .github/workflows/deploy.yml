@@ -52,7 +52,7 @@ jobs:
           }
           EOF
 
-      - name: Inject skill ID into ask-resources.json
+      - name: Inject skill ID into ask-states.json
         env:
           SKILL_ID: ${{ secrets.SKILL_ID }}
         run: |
@@ -60,11 +60,18 @@ jobs:
             echo "Error: SKILL_ID secret is not set"
             exit 1
           fi
-          jq --arg id "$SKILL_ID" '.profiles.default.skillId = $id' ask-resources.json > tmp.json
-          mv tmp.json ask-resources.json
-          echo "--- ask-resources.json after injection ---"
-          cat ask-resources.json
-          echo "------------------------------------------"
+          mkdir -p .ask
+          cat > .ask/ask-states.json << EOF
+          {
+            "askcliStatesVersion": "2020-03-31",
+            "profiles": {
+              "default": {
+                "skillId": "${SKILL_ID}"
+              }
+            }
+          }
+          EOF
+          echo "Targeting skill: $SKILL_ID"
 
       - name: Deploy to Alexa-Hosted
-        run: ask deploy --profile default --debug
+        run: ask deploy --profile default
