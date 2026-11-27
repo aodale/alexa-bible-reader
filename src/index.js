@@ -159,8 +159,8 @@ const ReadChapterIntentHandler = {
 
     try {
       const result = await bibleService.getChapter(book, chapter, version);
-      const speakOutput = `Here is ${result.reference} from the ${result.version}: ${result.text}`;
-      
+      const speakOutput = 'Here is ' + result.reference + ' from the ' + result.version + '. ' + result.text;
+
       return handlerInput.responseBuilder
         .speak(speakOutput)
         .getResponse();
